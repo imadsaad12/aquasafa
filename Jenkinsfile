@@ -6,7 +6,8 @@ pipeline{
               dir("backend"){
                nodejs("Node"){
                 //sh "pwd"
-               echo "$pwd"
+               echo "$WORKSPACE"
+               
                }
               }
             }
