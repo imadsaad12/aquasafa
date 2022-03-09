@@ -4,7 +4,7 @@ pipeline{
         stage("building"){
             steps{
                echo "$WORKSPACE"
-               bat 'cd $WORKSPACE/aquasafa'
+               bat("dir /B ${myDir}")
               dir("aquasafa"){
                nodejs("Node"){
                 //sh "pwd"
