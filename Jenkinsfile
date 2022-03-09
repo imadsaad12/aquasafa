@@ -3,7 +3,8 @@ pipeline{
     stages{
         stage("building"){
             steps{
-              dir("backend"){
+               echo "$WORKSPACE"
+              dir("aquasafa"){
                nodejs("Node"){
                 //sh "pwd"
                echo "$WORKSPACE"
