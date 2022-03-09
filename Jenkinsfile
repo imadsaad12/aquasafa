@@ -6,8 +6,7 @@ pipeline{
 
               dir ('aquasafa') {
                   nodejs("Node"){
-                  
-                   echo '$WORKSPACE'
+                   echo "$WORKSPACE"
                }
               }
             }
