@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("building"){
             steps{
-              dir("aquasafa"){
+              dir("backend"){
                nodejs("Node"){
                    sh 'npm install'
                }
