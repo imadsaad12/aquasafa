@@ -6,7 +6,7 @@ pipeline{
 
               dir ('aquasafa') {
                   nodejs("Node"){
-                   echo "$WORKSPACE"
+                   bat 'npm install'
                }
               }
             }
