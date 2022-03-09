@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("building"){
             steps{
-                echo "========building Application========"
+               sh 'cd aquasafa && npm install'
             }
         }
         stage("testing"){
