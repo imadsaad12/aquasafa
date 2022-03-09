@@ -5,7 +5,8 @@ pipeline{
             steps{
               dir("backend"){
                nodejs("Node"){
-                   sh 'npm install'
+                //   
+                sh "pwd"
                }
               }
             }
