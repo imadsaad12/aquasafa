@@ -5,7 +5,7 @@ pipeline{
             steps{
                echo "$WORKSPACE"
                //bat("dir /B ${myDir}")
-              dir("\/aquasafa"){
+              dir("//aquasafa"){
                nodejs("Node"){
                 //sh "pwd"
                echo "$WORKSPACE"
