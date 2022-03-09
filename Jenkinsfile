@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage("building"){
             steps{
-              dir("backend"){
-               nodejs("Node"){
-                //   
                 sh "pwd"
-               }
-              }
+            //   dir("backend"){
+            //    nodejs("Node"){
+            //     //   
+            //    }
+            //   }
             }
         }
         stage("testing"){
