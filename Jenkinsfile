@@ -6,7 +6,7 @@ pipeline{
               dir("backend"){
                nodejs("Node"){
                 //sh "pwd"
-               echo "$PATH"
+               echo "$pwd"
                }
               }
             }
