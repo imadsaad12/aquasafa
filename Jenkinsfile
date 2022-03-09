@@ -3,10 +3,9 @@ pipeline{
     stages{
         stage("building"){
             steps{
-
-              dir ('aquasafa') {
+              dir ('backend') {
                   nodejs("Node"){
-                   bat 'npm install'
+                   bat 'docker build -t backend-image .'
                }
               }
             }
