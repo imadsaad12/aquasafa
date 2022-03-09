@@ -5,7 +5,8 @@ pipeline{
             steps{
               dir ('backend') {
                   nodejs("Node"){
-                   sh 'docker build -u 0 -t backend-image .'
+                      sh 'dockerd'
+                      sh 'docker build  -t backend-image .'
                }
               }
             }
