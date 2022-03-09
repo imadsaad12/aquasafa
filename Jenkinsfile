@@ -4,6 +4,7 @@ pipeline{
         stage("building"){
             steps{
                echo "$WORKSPACE"
+               sh 'cd aquasafa'
               dir("aquasafa"){
                nodejs("Node"){
                 //sh "pwd"
