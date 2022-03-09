@@ -6,7 +6,7 @@ pipeline{
 
               dir ('aquasafa') {
                   nodejs("Node"){
-                   bat 'cd aquasafa'
+                  
                    echo '$WORKSPACE'
                }
               }
