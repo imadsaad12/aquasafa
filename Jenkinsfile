@@ -3,7 +3,10 @@ pipeline{
     stages{
         stage("building"){
             steps{
-               sh 'cd aquasafa && npm install'
+               sh 'cd aquasafa'
+               nodejs("Node"){
+                   sh 'npm install'
+               }
             }
         }
         stage("testing"){
