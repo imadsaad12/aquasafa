@@ -3,10 +3,10 @@ pipeline{
     stages{
         stage("building"){
             steps{
-               sh "pwd"
+               echo "pwd"
               dir("backend"){
                nodejs("Node"){
-                sh "pwd"
+                //sh "pwd"
                }
               }
             }
