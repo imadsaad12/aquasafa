@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage("building"){
             steps{
-                cmd_exec('cd ./aquasafa')
-            //   dir("backend"){
-            //    nodejs("Node"){
-            //     //   
-            //    }
-            //   }
+               sh "pwd"
+              dir("backend"){
+               nodejs("Node"){
+                sh "pwd"
+               }
+              }
             }
         }
         stage("testing"){
