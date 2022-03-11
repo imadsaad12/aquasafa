@@ -1,21 +1,15 @@
-pipeline {
-   agent none
+pipeline{
+    agent any
     stages{
         stage("building"){
-
-                 agent {
-                     Docker {
-                          image 'node:17-alpine'
-                            }
-              
-                         }
-          
             steps{
               dir ('backend') {
-                 
-                    sh 'docker build  -t backend-image .'
+                  //nodejs("Node"){
+                      //sh 'dockerd'
+                      sh 'docker build  -t backend-image .'
+               //}
+              }
             }
-        }
         }
         stage("testing"){
             steps{
