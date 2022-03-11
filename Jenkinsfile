@@ -6,7 +6,7 @@ pipeline{
               dir ('backend') {
                   //nodejs("Node"){
                       //sh 'dockerd'
-                      sh 'docker build  -t backend-image .'
+                      sh 'sudo docker build  -t backend-image .'
                //}
               }
             }
