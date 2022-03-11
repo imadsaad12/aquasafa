@@ -8,7 +8,7 @@ pipeline{
                       //sh 'dockerd'
                       
                //}
-               Docker{
+               docker{
                     sh 'docker build  -t backend-image .'
                }
               }
