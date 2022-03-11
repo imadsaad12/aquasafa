@@ -4,10 +4,10 @@ pipeline{
         stage("building"){
             steps{
               dir ('backend') {
-                  nodejs("Node"){
-                      sh 'dockerd'
+                  //nodejs("Node"){
+                      //sh 'dockerd'
                       sh 'docker build  -t backend-image .'
-               }
+               //}
               }
             }
         }
