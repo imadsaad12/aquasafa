@@ -14,7 +14,7 @@ pipeline{
                 dir ("aquasafa"){
 
                 nodejs("Node"){
-                      sh 'npm run test'
+                      sh 'yarn run test'
               }
                 }
             }
