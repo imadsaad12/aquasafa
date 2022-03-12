@@ -3,16 +3,30 @@ pipeline{
     stages{
         stage("building"){
             steps{
-             
-                  nodejs("Node"){
-                      sh 'docker compose up'
-              }
+                 dir ("aquasafa"){
+                nodejs("Node"){
+                      sh 'yarn install'
+                      sh 'yarn run test'
+                 }
+                }
+                 dir ("backend"){
+                nodejs("Node"){
+                      sh 'yarn install'
+                     // sh 'yarn run test'
+                 }
+                }
             }
         }
+        // stage("building"){
+        //     steps{
+        //           nodejs("Node"){
+        //               sh 'docker compose up'
+        //       }
+        //     }
+        // }
         stage("testing"){
             steps{
                 dir ("aquasafa"){
-
                 nodejs("Node"){
                       sh 'yarn run test'
               }
