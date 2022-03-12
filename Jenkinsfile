@@ -11,9 +11,12 @@ pipeline{
         }
         stage("testing"){
             steps{
+                dir ("aquasafa"){
+
                 nodejs("Node"){
                       sh 'npm run test'
               }
+                }
             }
         }
     }
