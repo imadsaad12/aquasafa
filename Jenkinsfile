@@ -5,7 +5,7 @@ pipeline{
             steps{
              
                   nodejs("Node"){
-                      sh 'docker-compose up'
+                      sh 'docker compose up'
               }
             }
         }
