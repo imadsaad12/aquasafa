@@ -2,7 +2,7 @@ version: "3.3"
 services:
   backend:
     build: ./backend
-    container_name: backend-C
+    container_name: backend-container
     ports:
       - '4000:4000'
     # volumes:
@@ -10,7 +10,7 @@ services:
     # - ./backend/node_modules 
   aquasafa:
     build: ./aquasafa
-    container_name: aqasafa-C
+    container_name: aquasafa-container
     ports:
       - '3000:3000'
     # volumes:

@@ -11,8 +11,11 @@ app.use(express.json());
 
 //connect to DB
 mongoose
-  .connect("mongodb://localhost:27017/mydbname")
+  .connect("mongodb+srv://mydb:93928@cluster0.g0he0.mongodb.net/Aquasafa?retryWrites=true&w=majority")
   .then(() => app.listen(4000, console.log("Listining on port 4000")));
+// mongoose
+//   .connect("mongodb://localhost:27017/mydbname")
+//   .then(() => app.listen(4000, console.log("Listining on port 4000")));
 
 //customers routes
 app.get("/customers", async (req, res) => {
