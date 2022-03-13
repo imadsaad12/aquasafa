@@ -79,7 +79,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-raja')
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 	}
 
 	stages {
@@ -87,7 +87,9 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t bharathirajatut/nodeapp:latest .'
+                dir ('backend'){
+				sh 'docker build -t isdocker12/aqua-safa:latest .'
+                }
 			}
 		}
 
@@ -101,15 +103,11 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push bharathirajatut/nodeapp:latest'
+				sh 'docker push isdocker12/aqua-safa:latest'
 			}
 		}
 	}
 
-	post {
-		always {
-			sh 'docker logout'
-		}
-	}
+	
 
 }
