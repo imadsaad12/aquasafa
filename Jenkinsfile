@@ -94,7 +94,7 @@ pipeline{
 		stage('Login') {
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-				sh 'echo $HEROKU_CREDENTIALS_PSW | heroku login -i $HEROKU_CREDENTIALS_USR --password-stdin'
+				sh '(echo "$HEROKU_CREDENTIALS_EMAIL" echo "$HEROKU_CREDENTIALS_PASSWORD") | heroku login'
 			}
 		}
 		// stage('Push') {
