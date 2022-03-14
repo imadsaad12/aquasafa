@@ -48,20 +48,20 @@ pipeline{
 		HEROKU_CREDENTIALS=credentials('HerokuCli')
 	}
 	stages {
-		stage('Build') {
-			steps {
-                // dir ('aquasafa'){
-				// nodejs("Node"){
-				// sh 'yarn install'
-				// }	
-				sh 'docker build -t isdocker12/aqua-safa:latest .'
-                // }
-				// nodejs("Node"){
-				// sh 'npm install'
-				// }
-				//sh 'docker build -t isdocker12/aqua-safa:latest .'
-			}
-		}
+		// stage('Build') {
+		// 	steps {
+        //         dir ('aquasafa'){
+		// 		nodejs("Node"){
+		// 		sh 'yarn install'
+		// 		}	
+		// 		sh 'docker build -t isdocker12/aqua-safa:latest .'
+        //         }
+		// 		nodejs("Node"){
+		// 		sh 'npm install'
+		// 		}
+		// 		sh 'docker build -t isdocker12/aqua-safa:latest .'
+		// 	}
+		// }
 		stage('Login dockerhub & heroku') {
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
