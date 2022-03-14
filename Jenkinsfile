@@ -96,10 +96,10 @@ pipeline{
 				sh 'echo $HEROKU_CREDENTIALS_PSW | heroku login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
-		stage('Push') {
-			steps {
-				//sh 'docker push isdocker12/aqua-safa:latest'
-			}
-		}
+		// stage('Push') {
+		// 	steps {
+		// 		//sh 'docker push isdocker12/aqua-safa:latest'
+		// 	}
+		// }
 	}
 }
