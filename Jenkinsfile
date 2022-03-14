@@ -80,34 +80,26 @@ pipeline{
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		HEROKU_CREDENTIALS=credentials('HerokuCli')
 	}
-
 	stages {
-
 		stage('Build') {
-
 			steps {
                 dir ('backend'){
 				sh 'docker build -t isdocker12/aqua-safa:latest .'
                 }
 			}
 		}
-
 		stage('Login') {
-
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				sh 'echo $HEROKU_CREDENTIALS_PSW | heroku login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
-
 		stage('Push') {
-
 			steps {
-				sh 'docker push isdocker12/aqua-safa:latest'
+				//sh 'docker push isdocker12/aqua-safa:latest'
 			}
 		}
 	}
-
-	
-
 }
