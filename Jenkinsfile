@@ -75,7 +75,7 @@ pipeline{
 				// sh 'cd aquasafaProj'
 				// sh 'git clone https://github.com/imadsaad12/aquasafa.git'
 				// sh 'git init'
-				sh 'git remote add origin https://github.com/imadsaad12/aquasafa.git'
+				//sh 'git remote add origin https://github.com/imadsaad12/aquasafa.git'
 				sh 'git add . '
 				sh "git commit -m 'deploy' "
 				sh 'git push origin master '
