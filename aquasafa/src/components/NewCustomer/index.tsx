@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../costants";
 
 const useStyles = makeStyles({
   root: {
@@ -53,7 +54,7 @@ const Index = () => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/customers", values)
+      .post(`${api}/customers`, values)
       .then((res) => {
         navigate({ pathname: "/" });
         seterr(false);

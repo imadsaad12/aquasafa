@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/styles";
 import TableInfo from "./InfoTable/index"
 import HistoryTable from "./HistoryTable/index";
 import Calc from "./CalcTotalMonthly/index" ;
+import { api } from "../../costants";
 
 type Customer = {
   fullname: string ;
@@ -41,7 +42,7 @@ const Index = () => {
   useEffect(() => {
     const getCustomer = () => {
       axios
-        .get(`http://localhost:4000/customers/${id}`)
+        .get(`${api}/customers/${id}`)
         .then((res) => {
           setCustomer(res.data);
         })

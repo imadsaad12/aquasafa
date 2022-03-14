@@ -1,6 +1,7 @@
 import { Button, TextField, Typography } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { api } from "../../../costants";
 type Order = {
   _id: any;
   customername: string;
@@ -21,7 +22,7 @@ const Index = ({ name }: { name: string }) => {
   useEffect(() => {
     const getOrders = () => {
       axios
-        .get(`http://localhost:4000/orders/${name}`)
+        .get(`${api}/orders/${name}`)
         .then((res) => {
           setOrders(res.data);
         })

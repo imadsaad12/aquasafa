@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   backend:
-    build: ./backend
+    build: ./Dockerfile
     container_name: backend-container
     ports:
       - '4000:4000'

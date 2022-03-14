@@ -5,6 +5,7 @@ const Customers = require("./models/Customer");
 const Order = require("./models/Orders");
 const mongoose = require("mongoose");
 const Payments = require("./models/Payments");
+const Port=process.env.PORT || 4000
 // middlewares
 app.use(cors());
 app.use(express.json());
@@ -12,7 +13,7 @@ app.use(express.json());
 //connect to DB
 mongoose
   .connect("mongodb+srv://mydb:93928@cluster0.g0he0.mongodb.net/Aquasafa?retryWrites=true&w=majority")
-  .then(() => app.listen(4000, console.log("Listining on port 4000")));
+  .then(() => app.listen(Port, console.log("Listining on port 4000")));
 // mongoose
 //   .connect("mongodb://localhost:27017/mydbname")
 //   .then(() => app.listen(4000, console.log("Listining on port 4000")));
@@ -135,3 +136,9 @@ app.get("/payments",async(req,res)=>{
     res.send(error)
   }
 })
+if(process.env.NODE_ENV==="production"){
+  app.use(express.static("aquasafa/build"))
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'aquasafa','build','index.html'))
+  })
+}

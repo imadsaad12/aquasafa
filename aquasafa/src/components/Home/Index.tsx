@@ -10,6 +10,7 @@ import {
 import { makeStyles } from "@material-ui/styles";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { api } from "../../costants";
 const useStyles = makeStyles({
   form: {
     display: "flex",
@@ -71,7 +72,7 @@ const Index = () => {
     setshow({ ...show, loading: true });
     const payload={...formvalues,total:total,paid:paid ? true : false}
     axios
-      .post("http://localhost:4000/orders", payload)
+      .post(`${api}/orders`, payload)
       .then((res) => {
       })
       .catch((err) => {
@@ -100,7 +101,7 @@ const Index = () => {
   useEffect(() => {
     const getCustomers = () => {
       axios
-        .get("http://localhost:4000/customers")
+        .get(`${api}/customers`)
         .then((res) => {
           setvalues(res.data);
           setFiltered(res.data)

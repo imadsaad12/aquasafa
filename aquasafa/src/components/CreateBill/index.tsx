@@ -1,6 +1,8 @@
 import { Button, TextField, Typography } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { api } from "../../costants";
+
 import OrdersTable from "./Table/index";
 type Order = {
   _id: any;
@@ -22,7 +24,7 @@ const Index = () => {
   const [formvalues, setFormValues] = useState({ from: "", to: "", name: "" });
   const getOrders = async () => {
     axios
-      .get(`http://localhost:4000/orders/${formvalues.name}`)
+      .get(`${api}/orders/${formvalues.name}`)
       .then((res) => {
         let temp: Order[] = [];
         setOrders(res.data);

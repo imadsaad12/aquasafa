@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import axios from "axios";
+import { api } from "../../../costants";
 
 const useStyles = makeStyles({
   form: {
@@ -21,7 +22,7 @@ const Index = () => {
         console.log(values)
     }
     const handleSubmit=()=>{
-        axios.post("http://localhost:4000/payments",values)
+        axios.post(`${api}/payments`,values)
         .then(()=>{
             alert("Payments Added Successfully")
         })

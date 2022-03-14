@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import axios from "axios";
+import { api } from "../../../costants";
 
 const useStyles = makeStyles({
   form: {
@@ -72,7 +73,7 @@ const Index = () => {
   let total:number=0;
     axios
       .get(
-        `http://localhost:4000/orders`
+        `${api}/orders`
       )
       .then((res) => {
         setShow(true);

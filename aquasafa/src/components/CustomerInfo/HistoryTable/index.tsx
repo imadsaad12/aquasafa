@@ -11,6 +11,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import axios from "axios";
+import { api } from "../../../costants";
 
 type Order = {
   _id: any;
@@ -36,7 +37,7 @@ const Index = ({  name }: Props) => {
 
   const getOrders = (page:number) => {
     axios
-      .get(`http://localhost:4000/orders/${name}?page=${page}&size=4`)
+      .get(`${api}/orders/${name}?page=${page}&size=4`)
       .then((res) => {
         setlistOfOders(res.data.orders);
         setTotalPages(res.data.totalPages);

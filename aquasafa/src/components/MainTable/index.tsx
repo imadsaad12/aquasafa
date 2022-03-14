@@ -2,6 +2,7 @@ import React, { ChangeEventHandler, useEffect, useState } from "react";
 import Header from "./header/index";
 import MTable from "./Table/Index";
 import axios from "axios";
+import { api } from "../../costants";
 type Customer = {
   fullname: string | undefined;
   phone: number | undefined;
@@ -30,7 +31,7 @@ const Index = () => {
   useEffect(() => {
     const getCustomers = () => {
       axios
-        .get("http://localhost:4000/customers")
+        .get(`${api}/customers`)
         .then((res) => {
           setvalues(res.data);
           setFiltered(res.data);
@@ -41,7 +42,7 @@ const Index = () => {
     };
     const getOrders = () => {
       axios
-        .get("http://localhost:4000/orders")
+        .get(`${api}/orders`)
         .then((res) => {
           setOrders(res.data);
         })
