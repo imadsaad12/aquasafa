@@ -81,7 +81,7 @@ pipeline{
 				// sh "git commit -m 'deploy' "
 				// sh 'git push origin master '
 				sh 'heroku git:remote -a aquasafa'
-				sh 'git push heroku master'
+				sh 'git push heroku HEAD:master'
 			}
 		}
 	}
