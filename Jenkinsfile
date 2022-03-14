@@ -78,7 +78,7 @@ pipeline{
 				//sh 'git remote add origin https://github.com/imadsaad12/aquasafa.git'
 				sh 'git add . '
 				sh 'git status '
-				sh 'git branch --show-current '
+				sh 'git checkout master'
 				//sh 'git commit -m "deploy" ' 
 				//sh 'git push origin master '
 				sh 'heroku git:remote -a aquasafa'
