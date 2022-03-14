@@ -71,7 +71,6 @@ pipeline{
 		stage('Push to heroku') {
 			steps {
 				//sh 'docker push isdocker12/aqua-safa:latest'
-				sh 'cd home'
 				sh 'mkdir aquasafa'
 				sh 'cd aquasafa'
 				sh 'git clone https://github.com/imadsaad12/aquasafa.git'
