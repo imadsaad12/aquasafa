@@ -50,15 +50,15 @@ pipeline{
 	stages {
 		stage('Build') {
 			steps {
-                dir ('aquasafa'){
-				nodejs("Node"){
-				sh 'yarn install'
-				}	
+                // dir ('aquasafa'){
+				// nodejs("Node"){
+				// sh 'yarn install'
+				// }	
 				sh 'docker build -t isdocker12/aqua-safa:latest .'
-                }
-				nodejs("Node"){
-				sh 'npm install'
-				}
+                // }
+				// nodejs("Node"){
+				// sh 'npm install'
+				// }
 				//sh 'docker build -t isdocker12/aqua-safa:latest .'
 			}
 		}
