@@ -9,6 +9,7 @@ type Customer = {
   turn: number | undefined;
   tag: string | undefined;
   address: string | undefined;
+  day: string | undefined;
   _id: any;
 };
 type Order={
@@ -67,8 +68,6 @@ const handleDateSearch=(date:{from:string,to:string,turn:number})=>{
      })
    })
     setFiltered(filter);
-    console.log(filter)
-  
 }
   const handleSearch = (searchinput: string) => {
     const input = searchinput;

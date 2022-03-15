@@ -5,6 +5,7 @@ const Customers = require("./models/Customer");
 const Order = require("./models/Orders");
 const mongoose = require("mongoose");
 const Payments = require("./models/Payments");
+const MyBottles = require("./models/MyBottles");
 const Port=process.env.PORT || 4000
 // middlewares
 app.use(cors());
@@ -60,6 +61,10 @@ app.post("/orders", async (req, res) => {
     }).format(today);
     console.log(req.body, date);
     const order = await new Order({ ...req.body, date: date });
+    if(req.body.numberOfMyBottles >=1){
+      const mybottle = await new MyBottles({fullname:req.body.customername,numberofbottles:req.body.numberOfMyBottles});
+      await mybottle.save();
+    }
     await order.save();
     res.send("order added succesfully");
   } catch (error) {
@@ -131,6 +136,27 @@ app.get("/payments",async(req,res)=>{
   try {
     const payments=await Payments.find();
     res.json(payments)
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+
+// mybottles route
+app.get("/mybottles",async(req,res)=>{
+  try {
+    const mybottles=await MyBottles.find()
+    res.json(mybottles)
+  } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+})
+app.delete("/mybottles/:id",async(req,res)=>{
+  const { id } = req.params;
+  try {
+    const mybottles=await MyBottles.findOneAndDelete({_id:id})
+    res.status(200).send("deleted successfully")
   } catch (error) {
     console.log(error)
     res.send(error)

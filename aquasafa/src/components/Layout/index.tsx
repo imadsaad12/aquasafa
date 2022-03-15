@@ -15,6 +15,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import TableViewIcon from '@material-ui/icons/TableChart';
 import DescriptionIcon from '@material-ui/icons/Description';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import BatteryFullIcon from '@material-ui/icons/BatteryFull';
 type Props = {
   children: React.ReactNode;
 };
@@ -71,6 +72,11 @@ const Index = ({ children }: Props) => {
       text: "Paymnets",
       icon: <MonetizationOnIcon style={{ fontSize: 30, color: "#939395" }} />,
       path: "/payments",
+    },
+    {
+      text: "My Bottles",
+      icon: <BatteryFullIcon style={{ fontSize: 30, color: "#939395" }} />,
+      path: "/mybottles",
     },
   ];
   return (

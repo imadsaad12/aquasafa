@@ -23,6 +23,7 @@ type Customer = {
   turn: number | undefined;
   tag: string | undefined;
   address: string | undefined;
+  day: string | undefined;
   _id: any;
 };
 type Props = {
@@ -37,7 +38,8 @@ const Index = ({ customers }: Props) => {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Tag</TableCell>
-            <TableCell>turn</TableCell>
+            <TableCell>Turn</TableCell>
+            <TableCell>Day</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -51,6 +53,7 @@ const Index = ({ customers }: Props) => {
                 </TableCell>
                 <TableCell> {i.tag} </TableCell>
                 <TableCell> {i.turn} </TableCell>
+                <TableCell> {i.day} </TableCell>
               </TableRow>
             );
           })}

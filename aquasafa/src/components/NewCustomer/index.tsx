@@ -33,6 +33,7 @@ type Customer = {
   phone: number | undefined;
   tag: string | undefined;
   address: string | undefined;
+  day: string | undefined;
 };
 
 const Index = () => {
@@ -44,7 +45,8 @@ const Index = () => {
     phone: undefined,
     tag: undefined,
     address: undefined,
-    turn:undefined
+    turn:undefined,
+    day:undefined,
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -123,6 +125,16 @@ const Index = () => {
           label="Turn"
           name="turn"
           type="number"
+          onChange={handleChange}
+          error={err}
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          className={classes.textfield}
+          color="primary"
+          label="Day"
+          name="day"
           onChange={handleChange}
           error={err}
         />

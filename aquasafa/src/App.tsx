@@ -7,6 +7,7 @@ import MainTable from "./components/MainTable/index"
 import CustomerInfo from "./components/CustomerInfo/index"
 import CreateBill from "./components/CreateBill/index"
 import Payments from "./components/Payments/index"
+import MyBottles from "./components/MyBottles/index"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/maintable' element={<MainTable />}/>
         <Route path='/bills' element={<CreateBill />}/>
         <Route path='/payments' element={<Payments />}/>
+        <Route path='/mybottles' element={<MyBottles />}/>
       </Routes>
    </Layout>
    </BrowserRouter>
