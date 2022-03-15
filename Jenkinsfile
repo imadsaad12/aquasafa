@@ -65,22 +65,15 @@ pipeline{
 		stage('Login dockerhub & heroku') {
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-				sh '(echo "$HEROKU_CREDENTIALS_USR" echo "$HEROKU_CREDENTIALS_PSW") | heroku login'
+				sh '(echo "$HEROKU_CREDENTIALS_USR" echo "$HEROKU_CREDENTIALS_PSW") | heroku login -i'
 			}
 		}
 		stage('Push to heroku') {
 			steps {
 				//sh 'docker push isdocker12/aqua-safa:latest'
-				// sh 'mkdir aquasafaProj'
-				// sh 'cd aquasafaProj'
-				// sh 'git clone https://github.com/imadsaad12/aquasafa.git'
-				// sh 'git init'
-				//sh 'git remote add origin https://github.com/imadsaad12/aquasafa.git'
 				sh 'git add . '
 				sh 'git status '
 				sh 'git checkout master'
-				//sh 'git commit -m "deploy" ' 
-				//sh 'git push origin master '
 				sh 'heroku git:remote -a aquasafa'
 				sh 'git push heroku HEAD:master'
 			}
