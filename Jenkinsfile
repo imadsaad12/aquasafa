@@ -73,8 +73,10 @@ pipeline{
 			steps {
 				//sh 'docker push isdocker12/aqua-safa:latest'
 				sh 'git checkout master'
+				sh 'git pull origin master'
 				sh 'git add . '
 				sh 'git status '
+				sh 'git commit -m "deploy" '
 				sh 'heroku git:remote -a aquasafa'
 				sh 'git push heroku HEAD:master'
 			}
