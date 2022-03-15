@@ -48,35 +48,39 @@ pipeline{
 		HEROKU_CREDENTIALS=credentials('HerokuCli')
 	}
 	stages {
-		// stage('Build') {
-		// 	steps {
-        //         dir ('aquasafa'){
-		// 		nodejs("Node"){
-		// 		sh 'yarn install'
-		// 		}	
-		// 		sh 'docker build -t isdocker12/aqua-safa:latest .'
-        //         }
-		// 		nodejs("Node"){
-		// 		sh 'npm install'
-		// 		}
-		// 		sh 'docker build -t isdocker12/aqua-safa:latest .'
-		// 	}
-		// }
+		stage('Build') {
+			steps {
+                dir ('aquasafa'){
+				nodejs("Node"){
+				sh 'yarn install'
+				}	
+				sh 'docker build -t isdocker12/aqua-safa:latest .'
+                }
+				nodejs("Node"){
+				sh 'npm install'
+				}
+				sh 'docker build -t isdocker12/aqua-safa:latest .'
+			}
+		}
+		stage('Test') {
+			steps {
+                dir ('aquasafa'){
+				nodejs("Node"){
+				sh 'npm run test'
+				}	
+                }
+			}
+		}
 		stage('Login dockerhub & heroku') {
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			
 				sh '(echo "$HEROKU_CREDENTIALS_USR" echo "$HEROKU_CREDENTIALS_PSW") | heroku login'
 			}
 		}
 		stage('Push to heroku') {
 			steps {
 				//sh 'docker push isdocker12/aqua-safa:latest'
-				sh 'git checkout master'
 				sh 'git pull origin master'
-				sh 'git add . '
-				sh 'git status '
-				sh 'git commit -m "deploy" '
 				sh 'heroku git:remote -a aquasafa'
 				sh 'git push heroku HEAD:master'
 			}
