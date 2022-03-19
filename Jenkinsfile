@@ -71,10 +71,10 @@ pipeline{
                 }
 			}
 		}
-		stage('Login dockerhub & heroku') {
+		stage('Login dockerhub ') {
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-				sh '(echo "$HEROKU_CREDENTIALS_USR" echo "$HEROKU_CREDENTIALS_PSW") | heroku login'
+				//sh '(echo "$HEROKU_CREDENTIALS_USR" echo "$HEROKU_CREDENTIALS_PSW") | heroku login'
 			}
 		}
 		stage('Push to heroku') {
