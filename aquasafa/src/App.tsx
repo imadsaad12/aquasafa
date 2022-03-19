@@ -37,25 +37,19 @@ function App() {
    <BrowserRouter>
    <Layout>
       <Routes>
-        <Route path={token ? '/' : '/'} element={token ?<Login />:<Login />} />
-        <Route path={token ? '/home' : '/'} element={token ?<Home />:<Login />}/>
-        <Route path={token ? '/customers' : '/'} element={token ?<NewCustomer />:<Login />} />
-        <Route path={token ? '/customers:id' : '/'} element={token ?<CustomerInfo />:<Login />}/>
-        <Route path={token ? '/maintable' : '/'} element={token ?<MainTable />:<Login />}/>
-        <Route path={token ? '/bills' : '/'} element={token ?<CreateBill />:<Login />}/>
-        <Route path={token ? '/payments' : '/'} element={token ?<Payments />:<Login />}/>
-        <Route  path={token ? '/mybottles' : '/'} element={token ?<MyBottles />:<Login />}/>
+        <Route  path='/' element={<Login />} />
+        <Route path={'/home' } element={token ?<Home />:<Login />}/>
+        <Route path={'/customers'} element={token ?<NewCustomer />:<Login />} />
+        <Route path={'/customers:id'} element={token ?<CustomerInfo />:<Login />}/>
+        <Route path={'/maintable'} element={token ?<MainTable />:<Login />}/>
+        <Route path={'/bills'} element={token ?<CreateBill />:<Login />}/>
+        <Route path={'/payments'} element={token ?<Payments />:<Login />}/>
+        <Route  path={ '/mybottles'} element={token ?<MyBottles />:<Login />}/>
       </Routes>
    </Layout>
    </BrowserRouter>
   );
 }
 export default App;
-function PrivateRoute({path,element}:any) {
-  //let auth = RequireAuth();
-  const cookie=new Cookies();
-  const token = cookie.get("token")
-  return (
-    <Route path={token ? path : "/"} element={token ?element:<Login />} />
-  );
-}
+
+
