@@ -91,7 +91,7 @@ const Index = () => {
     }, 1000);
   };
   const handleSearch = (input: string) => {
-    const filter = values.filter((i) => i.fullname?.startsWith(input));
+    const filter = values.filter((i) => i.fullname?.toLocaleLowerCase().startsWith(input.toLocaleLowerCase()));
     if (input === "" || filter.length ===0) {
       setFiltered(values);
     } else {

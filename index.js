@@ -6,6 +6,10 @@ const Order = require("./models/Orders");
 const mongoose = require("mongoose");
 const Payments = require("./models/Payments");
 const MyBottles = require("./models/MyBottles");
+const Admins = require("./models/Admins");
+const jwt =require('jsonwebtoken')
+const bcrypt =require('bcrypt')
+
 const Port=process.env.PORT || 4000
 // middlewares
 app.use(cors());
@@ -162,6 +166,48 @@ app.delete("/mybottles/:id",async(req,res)=>{
     res.send(error)
   }
 })
+app.post("/", async (req, res) => {
+  
+  const { username, password } = req.body;
+
+  const user = await Admins.findOne({ username });
+  console.log(user);
+  if (!user) {
+    return res.status(404).send(`No user exists with username ${username}`);
+  }
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  if (passwordMatch) {
+    const token = jwt.sign({ userId: user._id }, "XYZABC3366", {
+      expiresIn: "7d",
+    });
+    res.status(200).json(token);
+  } else {
+    res.status(401).send("password do not matches");
+  }
+});
+
+app.post("/signup", async (req, res) => {
+  const {password,username} = req.body;
+  //1) check if user already exist
+  const user = await Admins.findOne({ username });
+  if (user) {
+    return res.status(422).send(`User already exists with username ${username}`);
+  }
+  //2)if not hash their password
+  const hash = await bcrypt.hash(password, 10);
+  //3))create user
+  const newuser = await new Admins({password: hash,username:username}).save();
+
+  //4)create token for the new user
+  const token = jwt.sign({ userId: newuser._id }, "XYZABC3366", {
+    expiresIn: "7d",
+  });
+  res.status(201).json(token);
+  //5)send back token
+});
+
 if(process.env.NODE_ENV==="production"){
   app.use(express.static("aquasafa/build"))
   app.get("*",(req,res)=>{

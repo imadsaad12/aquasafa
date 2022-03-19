@@ -64,7 +64,7 @@ const Index = () => {
   const handleRetrived=(id:any)=>{
       axios.delete(`${api}/mybottles/${id}`)
       .then(res=>{
-        navigate({ pathname:`/`  })
+        navigate({ pathname:`/home`  })
       })
       .catch(err=>{
           console.log(err)

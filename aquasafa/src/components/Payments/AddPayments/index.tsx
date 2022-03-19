@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { Button, makeStyles, TextField,CircularProgress } from "@material-ui/core";
 import axios from "axios";
 import { api } from "../../../costants";
 
@@ -16,15 +16,19 @@ const useStyles = makeStyles({
 const Index = () => {
   const classes = useStyles();
   const [values,setValues]=useState({description:"",cost:""})
+  const [loading,setloading]=useState(false)
     const handleChange=( e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>{
      const {value,name}=e.target
         setValues({...values,[name]:value})
         console.log(values)
     }
     const handleSubmit=()=>{
+      setloading(true)
         axios.post(`${api}/payments`,values)
         .then(()=>{
-            alert("Payments Added Successfully")
+           setTimeout(() => {
+             setloading(false)
+           }, 1000);
         })
         .catch(err=>{
             console.log(err)
@@ -32,13 +36,23 @@ const Index = () => {
     }
   return (
     <div>
-      <form className={classes.form}>
+      {
+        loading ? 
+        <CircularProgress
+          color="primary"
+          style={{ marginTop: "1%", marginLeft: "45%" }}
+          size={100}
+        />
+        : 
+        <form className={classes.form}>
         <TextField variant="outlined" label="Description" color="primary" name="description" onChange={handleChange} />
         <TextField variant="outlined" label="Cost" color="primary" name="cost"  onChange={handleChange}/>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
           Add
         </Button>
       </form>
+      }
+     
     </div>
   );
 };

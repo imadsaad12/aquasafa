@@ -16,6 +16,8 @@ import TableViewIcon from '@material-ui/icons/TableChart';
 import DescriptionIcon from '@material-ui/icons/Description';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import BatteryFullIcon from '@material-ui/icons/BatteryFull';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Cookies from "universal-cookie"
 type Props = {
   children: React.ReactNode;
 };
@@ -45,13 +47,14 @@ const useStyles = makeStyles({
 const Index = ({ children }: Props) => {
   const classes = useStyles();
   //const Location = useLocation();
+  const cookie = new Cookies()
   const navigate = useNavigate();
 
   const list = [
     {
       text: "Home",
       icon: <HomeIcon style={{ fontSize: 30, color: "#939395" }} />,
-      path: "/",
+      path: "/home",
     },
     {
       text: "Add customer",
@@ -95,7 +98,7 @@ const Index = ({ children }: Props) => {
         variant="permanent"
       >
         <List className={classes.list}>
-          {list.map((i, index) => {
+          {cookie.get("token") && list.map((i, index) => {
             return (
               <ListItem
                 button
@@ -112,6 +115,20 @@ const Index = ({ children }: Props) => {
               </ListItem>
             );
           })}
+          {cookie.get("token") && <ListItem
+                button
+                onClick={() => {navigate({ pathname: '/' });cookie.remove("token")}}
+                key={"10pxa"}
+                className={classes.listItem}
+              >
+                <ListItemIcon children={<ExitToAppIcon style={{ fontSize: 30, color: "#939395" }} />} />
+                <ListItemText>
+                  <Typography variant="body1" >
+                    Log out
+                  </Typography>
+                </ListItemText>
+              </ListItem> }
+          
         </List>
       </Drawer>
       <div style={{ marginLeft: 240 }}>{children}</div>

@@ -102,7 +102,8 @@ const Index = () => {
           Submit
         </Button>
       </div>
-      {orders.length >= 0 ? <OrdersTable orders={bill} name={formvalues.name} from={formvalues.from} to={formvalues.to} />: null }
+      {/* {orders.length >= 0 ? <OrdersTable orders={bill} name={formvalues.name} from={formvalues.from} to={formvalues.to} />: null } */}
+     <OrdersTable orders={bill} name={formvalues.name} from={formvalues.from} to={formvalues.to} />
       
     </div>
   );
