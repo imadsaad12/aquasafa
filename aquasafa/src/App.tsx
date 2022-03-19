@@ -40,7 +40,7 @@ function App() {
         <Route  path='/' element={<Login />} />
         <Route path={'/home' } element={token ?<Home />:<Login />}/>
         <Route path={'/customers'} element={token ?<NewCustomer />:<Login />} />
-        <Route path={'/customers:id'} element={token ?<CustomerInfo />:<Login />}/>
+        <Route path={'/customers/:id'} element={token ?<CustomerInfo />:<Login />}/>
         <Route path={'/maintable'} element={token ?<MainTable />:<Login />}/>
         <Route path={'/bills'} element={token ?<CreateBill />:<Login />}/>
         <Route path={'/payments'} element={token ?<Payments />:<Login />}/>
