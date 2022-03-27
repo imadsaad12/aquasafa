@@ -1,6 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../costants";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
@@ -15,12 +15,19 @@ const Index = () => {
     setvalues({ ...values, [name]: value });
     console.log(values);
   };
+  // useEffect(()=>{
+  //   const cookie=new Cookies()
+  //  const token= cookie.get("token");
+  //   if(token){
+  //     navigate({pathname:"/home"})
+  //   }
+  // },[])
 
   const handleSubmit = () => {
     axios
       .post(`${api}/`, values)
       .then((res) => {
-          const cookie=new Cookies()
+          const cookie=new Cookies();
         cookie.set("token", res.data);
         navigate({pathname:"/home"})
       })

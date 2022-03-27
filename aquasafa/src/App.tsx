@@ -37,14 +37,14 @@ function App() {
    <BrowserRouter>
    <Layout>
       <Routes>
-        <Route  path='/' element={<Login />} />
-        <Route path={'/home' } element={token ?<Home />:<Login />}/>
-        <Route path={'/customers'} element={token ?<NewCustomer />:<Login />} />
-        <Route path={'/customers/:id'} element={token ?<CustomerInfo />:<Login />}/>
-        <Route path={'/maintable'} element={token ?<MainTable />:<Login />}/>
-        <Route path={'/bills'} element={token ?<CreateBill />:<Login />}/>
-        <Route path={'/payments'} element={token ?<Payments />:<Login />}/>
-        <Route  path={ '/mybottles'} element={token ?<MyBottles />:<Login />}/>
+        <Route  path={'/'} element={<Login />} />
+        <Route path={'/home' } element={<Home />}/>
+        <Route path={'/customers'} element={<NewCustomer />} />
+        <Route path={'/customers/:id'} element={<CustomerInfo />}/>
+        <Route path={'/maintable'} element={<MainTable />}/>
+        <Route path={'/bills'} element={<CreateBill />}/>
+        <Route path={'/payments'} element={<Payments />}/>
+        <Route  path={ '/mybottles'} element={<MyBottles />}/>
       </Routes>
    </Layout>
    </BrowserRouter>
